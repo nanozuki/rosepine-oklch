@@ -56,11 +56,12 @@ export const originalPalette: ColorPalette<RosePineTokens, RosePineVariants> = {
 	},
 };
 
-type AdjustedTokens = 'bg' | 'fg' | 'rose' | 'gold' | 'love' | 'pine' | 'foam' | 'iris';
+type AdjustedTokens = 'bg' | 'fg' | 'grey' | 'rose' | 'gold' | 'love' | 'pine' | 'foam' | 'iris';
 type AdjustedVariants = 'light2' | 'light1' | 'mid' | 'dark1' | 'dark2';
 const midValue: Record<AdjustedTokens, [number, number, number]> = {
 	bg: [0.9, 0.0115, 72],
 	fg: [0.55, 0.0629, 290],
+	grey: [0.9, 0.006, 334],
 	love: [0.6, 0.1071, 2.66],
 	gold: [0.6, 0.1459, 69.74],
 	rose: [0.6, 0.1058, 23.03],
@@ -71,6 +72,7 @@ const midValue: Record<AdjustedTokens, [number, number, number]> = {
 const lightnessSteps: Record<AdjustedTokens, number> = {
 	bg: 0.05,
 	fg: 0.1,
+	grey: 0.05,
 	love: 0.15,
 	gold: 0.15,
 	rose: 0.15,
@@ -83,7 +85,17 @@ const override: Partial<Record<AdjustedTokens, Partial<Record<AdjustedVariants, 
 };
 
 export const adjustedPalette = (function buildAdjustedPalette() {
-	const tokens = ['bg', 'fg', 'love', 'gold', 'rose', 'pine', 'foam', 'iris'] as AdjustedTokens[];
+	const tokens = [
+		'bg',
+		'fg',
+		'grey',
+		'love',
+		'gold',
+		'rose',
+		'pine',
+		'foam',
+		'iris',
+	] as AdjustedTokens[];
 	const variants = ['light2', 'light1', 'mid', 'dark1', 'dark2'] as AdjustedVariants[];
 	const palette: Partial<ColorPalette<AdjustedTokens, AdjustedVariants>> = {};
 	const setColor = (
